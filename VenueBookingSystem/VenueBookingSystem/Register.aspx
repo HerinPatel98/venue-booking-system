@@ -9,8 +9,6 @@
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4" style="color: #00796b;">Create a New Account</h2>
                         
-                        <asp:Label ID="lblMessage" runat="server" CssClass="alert w-100 mb-3" Visible="false" />
-
                         <div class="mb-3">
                             <label for="txtEmail" class="form-label">Email Address (Username)</label>
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
@@ -33,7 +31,7 @@
                             <asp:RegularExpressionValidator 
                                 runat="server" 
                                 ControlToValidate="txtPassword"
-                                ValidationExpression="^(?=.*[A-Z])(?=.*[0-9]).{4,}$"
+                                ValidationExpression="^(?=.*[A-Z|a-z])(?=.*[0-9]).{4,}$"
                                 ErrorMessage="Password must be 4+ chars, with 1 uppercase, 1 number."
                                 ForeColor="Red"
                                 Display="Dynamic"
@@ -48,7 +46,12 @@
                         <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" CssClass="btn btn-primary w-100" />
 
                         <hr />
-                        
+                        <div class="mt-3">
+                            <asp:Label ID="lblMessage" runat="server" CssClass="alert w-100 alert-dismissible fade show text-center" Visible="false">
+                                <%-- This button appears inside the label text when visible --%>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </asp:Label>
+                        </div>
                         <p class="text-center mt-3">
                             Already have an account? <a href="Login.aspx" style="color: #00796b;">Log In Here</a>
                         </p>
