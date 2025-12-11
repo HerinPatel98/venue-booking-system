@@ -79,7 +79,7 @@
                         <div class="col-md-4">
                             <h4>Quick Links</h4>
                             <ul class="list-unstyled">
-                                <li><a href="~/" class="nav-link">Home</a></li>
+                                <li><a href="/" class="nav-link">Home</a></li>
                                 <li><a href="~/ListVenues.aspx" class="nav-link">Browse Venues</a></li>
                                 <!-- Links you can manage visibility of in C# if needed -->
                                 <li><a href="~/UserDashboard.aspx" class="nav-link">User Dashboard</a></li>

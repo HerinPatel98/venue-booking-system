@@ -128,7 +128,7 @@
                             <img src="Images/palace1.jpg" class="venue-img" alt="Palace1">
                             <div class="card-body">
                                 <h5 class="card-title">Urban Terrace Hall</h5>
-                                <p class="card-text text-muted">A modern, smaller hall with an open terrace concept. Gives your guest perfect 360 view</p>
+                                <p class="card-text text-muted">A modern, smaller hall with an open terrace concept. Gives your guest perfect 360° view</p>
                                 <ul class="list-group list-group-flush mb-3">
                                     <li class="list-group-item"><strong>City:</strong> Ahmedabad</li>
                                     <li class="list-group-item"><strong>Capacity:</strong> 150 Guests</li>
