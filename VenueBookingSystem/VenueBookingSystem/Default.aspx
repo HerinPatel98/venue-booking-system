@@ -43,10 +43,10 @@
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 shadow-sm border-0" style="background-color: #ffffff;">
                             <div class="card-body">
-                                <p class="card-text fst-italic">
+                                <p class="card-text fst-italic mb-2">
                                     "Great selection of venues. The interface is clean and functional, exactly what a busy event planner needs!"
                                 </p>
-                                <footer class="blockquote-footer mt-3">
+                                <footer class="blockquote-footer mt-4">
                                     Event Planner <cite title="Source Title">Ahmedabad</cite>
                                 </footer>
                             </div>
@@ -81,10 +81,10 @@
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 shadow-sm border-0">
                             <!-- Placeholder for a venue image -->
-                            <img src="via.placeholder.com" class="card-img-top" alt="Venue Image">
+                            <img src="Images/gp1.webp" class="card-img-top" alt="Venue Image">
 
                             <div class="card-body">
-                                <h5 class="card-title">The Grand Ballroom</h5>
+                                <h5 class="card-title">The Grand Prix Hall</h5>
                                 <p class="card-text text-muted">A luxurious ballroom perfect for large weddings and events.</p>
 
                                 <ul class="list-group list-group-flush mb-3">
