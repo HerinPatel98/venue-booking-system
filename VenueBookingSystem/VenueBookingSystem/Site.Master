@@ -6,15 +6,18 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> | BookMyHall</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>   
 </head>
 <body>
     <form runat="server">
@@ -36,32 +39,67 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+        
+        <!-- Navigation Bar -->
+        <nav class="navbar navbar-expand-sm navbar-custom">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Application name</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand" runat="server" href="~/">VenueBook Pro</a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About">About</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/ListVenues.aspx">Browse Venues</a></li>
+                        
+                        <%-- Links we will control with C# in the code-behind file --%>
+                        <li id="navLogin" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/Login.aspx">Login</a></li>
+                        <li id="navRegister" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/Register.aspx">Register</a></li>
+                        
+                        <li id="navDashboard" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/UserDashboard.aspx">Dashboard</a></li>
+                        <li id="navAdmin" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Admin/Dashboard.aspx">Admin Panel</a></li>
+                        <li id="navLogout" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Logout.aspx">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container body-content">
+
+        <!-- Main Content Area -->
+        <div class="container body-content mt-4">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            <footer class="mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>VenueBook Pro</h4>
+                            <p>Discover seamless event planning with India's Largest Event Booking Portal. Explore a vast array of venues and services, ensuring a perfect match for your occasions.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Quick Links</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="~/" class="nav-link">Home</a></li>
+                                <li><a href="~/ListVenues.aspx" class="nav-link">Browse Venues</a></li>
+                                <!-- Links you can manage visibility of in C# if needed -->
+                                <li><a href="~/UserDashboard.aspx" class="nav-link">User Dashboard</a></li>
+                                <li><a href="~/Admin/Dashboard.aspx" class="nav-link">Admin Panel</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Contact Us</h4>
+                            <p>Email: info@venuebookpro.com<br />
+                                Phone: +91 9876543210</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <p>&copy; <%: DateTime.Now.Year %> - Venue Booking System | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+                </div>
             </footer>
         </div>
     </form>
+     <%-- Bootstrap JS (essential for the responsive navbar functionality) --%>
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>

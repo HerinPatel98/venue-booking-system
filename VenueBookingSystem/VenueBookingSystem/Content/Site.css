@@ -19,3 +19,55 @@ textarea {
         padding: 0;
     }
 }
+
+/* Content/Site.css */
+
+/* Set a light, calming background for the body */
+body {
+    background-color: #f0f7f7; /* Very light teal/grey */
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Custom Navbar styling (override Bootstrap defaults for a cool/calm look) */
+.navbar-custom {
+    background-color: #ffffff; /* White navbar background */
+    border-bottom: 3px solid #009688; /* Calm teal border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-custom .navbar-brand {
+    color: #00796b; /* Darker teal brand color */
+    font-weight: bold;
+}
+
+.navbar-custom .nav-link,
+footer .nav-link
+{
+    color: #555;
+    transition: color 0.3s;
+}
+
+.navbar-custom .nav-link:hover,
+footer .nav-link:hover{
+    color: #009688; /* Highlight color on hover */
+}
+
+/* Footer styling */
+footer {
+    background-color: #e0f2f1; /* Light teal footer background */
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+    border-top: 1px solid #009688;
+}
+
+footer .row div {
+    text-align: left;
+}
+
+/* General button styling for calming look */
+.btn-primary {
+    background-color: #009688;
+    border-color: #00796b;
+}
