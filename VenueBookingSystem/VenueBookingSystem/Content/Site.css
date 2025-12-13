@@ -68,7 +68,8 @@ body {
     position: relative;
     display: block;
     overflow: hidden; /* Ensures smooth transition */
-    border-radius: 40px;
+    border-radius: 30px;
+    border: 6px solid #00796b;
 }
 
 /* Image styling */
@@ -76,7 +77,6 @@ body {
     transition: transform 0.5s ease;
     height: 400px;
     width: 500px;
-    border-radius: 10px;
 }
 
 /* The overlay text/background, centered perfectly */
@@ -94,6 +94,19 @@ body {
     align-items: center; /* Centers vertically */
     transition: opacity 0.5s ease;
 }
+
+    .carousel-custom-overlay > h5 {
+        border: 3px solid white;
+        border-radius: 5px;
+        padding: 7px;
+    }
+
+        .carousel-custom-overlay > h5:hover {
+            background-color: #e0f2f1;
+            border-color: #00796b;
+            color: #00796b;
+            font-weight: bold;
+        }
 
 /* State when hovering over the container */
 .carousel-image-container:hover .carousel-custom-overlay {
