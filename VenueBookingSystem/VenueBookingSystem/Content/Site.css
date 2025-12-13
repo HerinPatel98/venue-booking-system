@@ -14,23 +14,21 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.navbar-custom .navbar-brand {
-    color: #00796b; /* Darker teal brand color */
-    font-weight: bold;
-}
+    .navbar-custom .navbar-brand {
+        color: #00796b; /* Darker teal brand color */
+        font-weight: bold;
+    }
 
-.navbar-custom .nav-link,
-footer .nav-link
-{
-    color: #555;
-    transition: color 0.3s;
-}
+    .navbar-custom .nav-link,
+    footer .nav-link {
+        color: #555;
+        transition: color 0.3s;
+    }
 
-.navbar-custom .nav-link:hover,
-footer .nav-link:hover{
-    color: #009688; /* Highlight color on hover */
-}
-
+        .navbar-custom .nav-link:hover,
+        footer .nav-link:hover {
+            color: #009688; /* Highlight color on hover */
+        }
 
 /* Venue Image */
 .venue-img {
@@ -46,12 +44,12 @@ footer .nav-link:hover{
     font-weight: bold;
 }
 
- /* Style the accordion button when it is OPEN (active state) */
- .accordion-button:not(.collapsed) {
-     background-color: #009688; /* Your primary calming teal color when open */
-     color: #ffffff; /* White text for contrast */
-     box-shadow: none; /* Remove the default blue glow/shadow */
- }
+    /* Style the accordion button when it is OPEN (active state) */
+    .accordion-button:not(.collapsed) {
+        background-color: #009688; /* Your primary calming teal color when open */
+        color: #ffffff; /* White text for contrast */
+        box-shadow: none; /* Remove the default blue glow/shadow */
+    }
 
 /* Style the body of the accordion (the answer area) */
 .accordion-body {
@@ -64,6 +62,54 @@ footer .nav-link:hover{
     border-color: #009688;
     box-shadow: 0 0 0 0.25rem rgba(0, 150, 136, 0.25);
 }
+
+/* Container needs position relative for overlay positioning */
+.carousel-image-container {
+    position: relative;
+    display: block;
+    overflow: hidden; /* Ensures smooth transition */
+    border-radius: 40px;
+}
+
+/* Image styling */
+.venue-carousel-img {
+    transition: transform 0.5s ease;
+    height: 400px;
+    width: 500px;
+    border-radius: 10px;
+}
+
+/* The overlay text/background, centered perfectly */
+.carousel-custom-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    color: white;
+    opacity: 0; /* Starts hidden */
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    transition: opacity 0.5s ease;
+}
+
+/* State when hovering over the container */
+.carousel-image-container:hover .carousel-custom-overlay {
+    opacity: 1; /* Fades in the dark overlay and text */
+}
+
+/* Optional: Slight zoom effect on image when hovered */
+.carousel-image-container:hover .venue-carousel-img {
+    transform: scale(1.05);
+    border-radius: 10px;
+}
+
+.carousel-item > a {
+    margin: 0 auto;
+}
+
 /* Footer styling */
 footer {
     background-color: #e0f2f1; /* Light teal footer background */
@@ -73,9 +119,9 @@ footer {
     border-top: 1px solid #009688;
 }
 
-footer .row div {
-    text-align: left;
-}
+    footer .row div {
+        text-align: left;
+    }
 
 /* General button styling for calming look */
 .btn-primary {
