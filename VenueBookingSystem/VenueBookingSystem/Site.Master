@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> | BookMyHall</title>
+    <title>BookMyHall | <%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -80,9 +80,9 @@
                             <h4>Quick Links</h4>
                             <ul class="list-unstyled">
                                 <li><a href="/" class="nav-link">Home</a></li>
-                                <li><a href="~/ListVenues.aspx" class="nav-link">Browse Venues</a></li>
+                                <li><a href="ListVenues.aspx" class="nav-link">Browse Venues</a></li>
                                 <!-- Links you can manage visibility of in C# if needed -->
-                                <li><a href="~/UserDashboard.aspx" class="nav-link">User Dashboard</a></li>
+                                <li><a href="UserDashboard.aspx" class="nav-link">User Dashboard</a></li>
                                 <li><a href="~/Admin/Dashboard.aspx" class="nav-link">Admin Panel</a></li>
                             </ul>
                         </div>

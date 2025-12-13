@@ -137,6 +137,7 @@
     <Content Include="Images\resort2.jpg" />
     <Content Include="Images\resort3.jpg" />
     <Content Include="Images\resort4.jpg" />
+    <Content Include="ListVenues.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="Register.aspx" />
@@ -228,6 +229,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ListVenues.aspx.cs">
+      <DependentUpon>ListVenues.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListVenues.aspx.designer.cs">
+      <DependentUpon>ListVenues.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
