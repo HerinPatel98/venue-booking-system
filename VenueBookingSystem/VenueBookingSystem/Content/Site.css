@@ -63,6 +63,33 @@ body {
     box-shadow: 0 0 0 0.25rem rgba(0, 150, 136, 0.25);
 }
 
+/* Reusing our fixed image height */
+.venue-img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+
+
+/* Footer styling */
+footer {
+    background-color: #e0f2f1; /* Light teal footer background */
+    padding: 20px 0;
+    margin-top: 40px;
+    text-align: center;
+    border-top: 1px solid #009688;
+}
+
+    footer .row div {
+        text-align: left;
+    }
+
+/* General button styling for calming look */
+.btn-primary {
+    background-color: #009688;
+    border-color: #00796b;
+}
+
 /* Container needs position relative for overlay positioning */
 .carousel-image-container {
     position: relative;
@@ -138,30 +165,3 @@ body {
         transform: translateY(-10px);
         box-shadow: 0 10px 20px rgba(0, 150, 136, 0.2) !important;
     }
-
-/* Reusing our fixed image height */
-.venue-img {
-    height: 220px;
-    object-fit: cover;
-    width: 100%;
-}
-
-
-/* Footer styling */
-footer {
-    background-color: #e0f2f1; /* Light teal footer background */
-    padding: 20px 0;
-    margin-top: 40px;
-    text-align: center;
-    border-top: 1px solid #009688;
-}
-
-    footer .row div {
-        text-align: left;
-    }
-
-/* General button styling for calming look */
-.btn-primary {
-    background-color: #009688;
-    border-color: #00796b;
-}
