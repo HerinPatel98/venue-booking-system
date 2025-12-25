@@ -18,6 +18,7 @@ namespace VenueBookingSystem
             if (!IsPostBack)
             {
                 //BindRepeater();
+                PopulateVenueTypeCheckboxes();
                 PopulateCityCheckboxes();
             }
             if (Session["IsUserLoggedIn"] == null || !(bool)Session["IsUserLoggedIn"] || Session["UserRole"].ToString() != "User")
@@ -125,6 +126,28 @@ namespace VenueBookingSystem
             }
         }
 
+        private void PopulateVenueTypeCheckboxes()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
+            string query = "SELECT DISTINCT VenueType FROM Venues ORDER BY VenueType";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // Clear any existing VenueType
+                    cblVenueType.Items.Clear();
+                    while (reader.Read())
+                    {
+                        cblVenueType.Items.Add(new ListItem(reader["VenueType"].ToString(), reader["VenueType"].ToString()));
+                    }
+                }
+            }
+        }
+
         private void PopulateCityCheckboxes()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
@@ -137,7 +160,7 @@ namespace VenueBookingSystem
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    // Clear any existing items first (though shouldn't be any on first load)
+                    // Clear any existing items first
                     cblCity.Items.Clear();
 
                     while (reader.Read())

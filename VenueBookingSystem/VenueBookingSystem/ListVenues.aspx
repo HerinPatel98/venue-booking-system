@@ -35,10 +35,7 @@
                         <%-- Venue Type Checkboxes --%>
                         <h6 class="card-title" style="color: #00796b;">Venue Type</h6>
                         <asp:CheckBoxList ID="cblVenueType" runat="server" CssClass="list-unstyled mb-3">
-                            <asp:ListItem Value="Banquet Hall" Text="Banquet Hall"></asp:ListItem>
-                            <asp:ListItem Value="Garden Plot" Text="Garden Plot"></asp:ListItem>
-                            <asp:ListItem Value="Terrace Hall" Text="Terrace Hall"></asp:ListItem>
-                            <%-- Add other types here --%>
+                            <%-- Dynamically Venue types will add here --%>
                         </asp:CheckBoxList>
 
                         <%-- Capacity Input --%>
