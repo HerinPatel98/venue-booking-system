@@ -18,6 +18,7 @@
                 </div>
             </div>
         </section>
+
         <section class="testimonials py-5">
             <div class="container">
                 <h2 class="text-center mb-5" style="color: #00796b;">What Our Clients Say</h2>
@@ -71,80 +72,45 @@
             </div>
         </section>
 
-        <section class="featured-venues py-5">
+        <!-- Default.aspx - Top Rated Section -->
+        <section class="featured-venues py-5 bg-light">
             <div class="container">
-                <h2 class="text-center mb-5" style="color: #00796b;">Explore Our Top Venues</h2>
-
+                <h2 class="text-center mb-5" style="color: #00796b;">Our Most Loved Venues</h2>
                 <div class="row">
+                    <asp:Repeater ID="RepeaterTopVenues" runat="server">
+                        <ItemTemplate>
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 shadow border-0 position-relative">
+                                    <!-- Floating Star Badge -->
+                                    <div class="position-absolute top-0 end-0 m-2 badge rounded-pill bg-white text-dark p-2">
+                                        ⭐ <%# Eval("AvgRating", "{0:F1}") %>
+                                    </div>
 
-                    <!-- Start of a single venue card (Copy the col-md-4 block for more venues) -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0">
-                            <!-- Placeholder for a venue image -->
-                            <img src="Images/hall1.png" class="card-img-top venue-img" alt="Venue Image">
+                                    <img src='<%# Eval("ImageUrl") %>' class="card-img-top venue-img" alt="Venue">
 
-                            <div class="card-body">
-                                <h5 class="card-title">The Grand Prix Hall</h5>
-                                <p class="card-text text-muted">A luxurious ballroom perfect for large weddings and events.</p>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-teal"><%# Eval("Name") %></h5>
+                                        <p class="text-muted small mb-2"><%# Eval("City") %></p>
 
-                                <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item"><strong>City:</strong> Rajkot</li>
-                                    <li class="list-group-item"><strong>Capacity:</strong> 300 Guests</li>
-                                    <li class="list-group-item"><strong>Type:</strong> Banquet Hall</li>
-                                </ul>
+                                        <div class="mb-3">
+                                            <!-- Displaying number of reviews -->
+                                            <span class="text-muted small">(<%# Eval("ReviewCount") %> Verified Reviews)</span>
+                                        </div>
 
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="text-primary"></h4>
-                                    <a href="VenueDetails.aspx?VenueId=1" class="btn btn-primary">View Details</a>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5 class="text-primary mb-0">₹<%# Eval("BasePrice", "{0:N0}") %></h5>
+                                            <a href='VenueDetails.aspx?VenueId=<%# Eval("VenueId") %>' class="btn btn-primary btn-sm">View Details</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- End of a single venue card -->
-
-                    <!-- Example of a second venue card -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0">
-                            <img src="Images/gp2.jpg" class="card-img-top venue-img" alt="Venue Image">
-                            <div class="card-body">
-                                <h5 class="card-title">Green Garden Plot</h5>
-                                <p class="card-text text-muted">A large open-air garden plot ideal for grand outdoor functions.</p>
-                                <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item"><strong>City:</strong> Rajkot</li>
-                                    <li class="list-group-item"><strong>Capacity:</strong> 1000 Guests</li>
-                                    <li class="list-group-item"><strong>Type:</strong> Garden Plot</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="text-primary"><%--₹25,000--%></h4>
-                                    <a href="VenueDetails.aspx?VenueId=2" class="btn btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Example of a third venue card -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0">
-                            <img src="Images/palace1.jpg" class="venue-img" alt="Palace1">
-                            <div class="card-body">
-                                <h5 class="card-title">Urban Terrace Hall</h5>
-                                <p class="card-text text-muted">A modern, smaller hall with an open terrace concept. Gives your guest perfect 360° view</p>
-                                <ul class="list-group list-group-flush mb-3">
-                                    <li class="list-group-item"><strong>City:</strong> Ahmedabad</li>
-                                    <li class="list-group-item"><strong>Capacity:</strong> 150 Guests</li>
-                                    <li class="list-group-item"><strong>Type:</strong> Terrace Hall</li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="text-primary"><%--₹8,000--%></h4>
-                                    <a href="VenueDetails.aspx?VenueId=3" class="btn btn-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
         </section>
+
+
         <section class="auth-prompts py-5">
             <div class="container">
                 <div class="row g-4">
@@ -200,12 +166,12 @@
                     <div class="accordion-item shadow-sm mb-3">
                         <h2 class="accordion-header" id="headingTwo">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                               What types of events do you provide services for?
+                                What types of events do you provide services for?
                             </button>
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                            We specialize in venue bookings for a wide range of events, including social gatherings such as weddings, birthday parties, and anniversaries, as well as corporate events like business meetings and conferences.   
+                                We specialize in venue bookings for a wide range of events, including social gatherings such as weddings, birthday parties, and anniversaries, as well as corporate events like business meetings and conferences.   
                             </div>
                         </div>
                     </div>
@@ -228,12 +194,12 @@
                     <div class="accordion-item shadow-sm mb-3">
                         <h2 class="accordion-header" id="headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                               What advantages do I gain from making a booking through your portal?
+                                What advantages do I gain from making a booking through your portal?
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                            We can assist you in securing the most favorable negotiated rates for venues. Our portal serves as a comprehensive solution for all your event-related bookings. Our dedicated team is ready to help you not only in booking the ideal venue but also in coordinating additional services such as catering, artists, and event themes.    
+                                We can assist you in securing the most favorable negotiated rates for venues. Our portal serves as a comprehensive solution for all your event-related bookings. Our dedicated team is ready to help you not only in booking the ideal venue but also in coordinating additional services such as catering, artists, and event themes.    
                             </div>
                         </div>
                     </div>
