@@ -39,9 +39,15 @@
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required." ForeColor="Red" Display="Dynamic" />
                         </div>
                         <div class="mb-3">
+                            <label for="txtCity" class="form-label">City</label>
+                            <asp:TextBox ID="txtCity" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCity" ErrorMessage="City is required." ForeColor="Red" Display="Dynamic" />
+                        </div>
+                        <div class="mb-3">
                             <label for="txtPhoneNumber" class="form-label">Phone Number (Optional)</label>
                             <asp:TextBox ID="txtPhoneNumber" runat="server" CssClass="form-control" TextMode="Phone"></asp:TextBox>
                         </div>
+                        
                         <%-- The Register Button --%>
                         <asp:Button ID="btnRegister" runat="server" Text="Register" OnClick="btnRegister_Click" CssClass="btn btn-primary w-100" />
 

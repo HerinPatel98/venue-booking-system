@@ -21,6 +21,7 @@ namespace VenueBookingSystem
             string password = txtPassword.Text;
             string fullName = txtFullName.Text.Trim();
             string phoneNumber = txtPhoneNumber.Text.Trim();
+            string city = txtCity.Text.Trim();
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
 
             try
@@ -31,8 +32,8 @@ namespace VenueBookingSystem
                     string hashedPassword = PasswordHasher.HashPassword(password);
 
                     // 2. Insert the resulting STRING into the NVARCHAR(MAX) column
-                    string query = @"INSERT INTO Users (Email, PasswordHash, Role, FullName, PhoneNumber) 
-                                     VALUES (@Email, @PasswordHash, @Role, @FullName, @PhoneNumber)";
+                    string query = @"INSERT INTO Users (Email, PasswordHash, Role, FullName, PhoneNumber, City) 
+                                     VALUES (@Email, @PasswordHash, @Role, @FullName, @PhoneNumber, @City)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -40,6 +41,7 @@ namespace VenueBookingSystem
                         cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword); // Pass the C# generated hash string
                         cmd.Parameters.AddWithValue("@Role", "User");      // CRITICAL: Automatically assign the 'User' role
                         cmd.Parameters.AddWithValue("@FullName", fullName);
+                        cmd.Parameters.AddWithValue("@City", city);
                         cmd.Parameters.AddWithValue("@PhoneNumber", string.IsNullOrEmpty(phoneNumber) ? (object)DBNull.Value : phoneNumber);
 
                         conn.Open();
