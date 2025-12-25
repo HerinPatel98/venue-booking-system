@@ -63,14 +63,6 @@ body {
     box-shadow: 0 0 0 0.25rem rgba(0, 150, 136, 0.25);
 }
 
-/* Reusing our fixed image height */
-.venue-img {
-    height: 220px;
-    object-fit: cover;
-    width: 100%;
-}
-
-
 /* Footer styling */
 footer {
     background-color: #e0f2f1; /* Light teal footer background */
