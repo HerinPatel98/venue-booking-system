@@ -123,6 +123,30 @@ body {
     margin: 0 auto;
 }
 
+/* Deafult.aspx - Top 3 Cards */
+.text-teal {
+    color: #00796b;
+    font-weight: 600;
+}
+
+/* Premium shadow for Top 3 cards */
+.featured-venues .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .featured-venues .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 150, 136, 0.2) !important;
+    }
+
+/* Reusing our fixed image height */
+.venue-img {
+    height: 220px;
+    object-fit: cover;
+    width: 100%;
+}
+
+
 /* Footer styling */
 footer {
     background-color: #e0f2f1; /* Light teal footer background */
