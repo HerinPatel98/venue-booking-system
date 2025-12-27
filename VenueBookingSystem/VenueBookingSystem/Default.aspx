@@ -24,50 +24,22 @@
                 <h2 class="text-center mb-5" style="color: #00796b;">What Our Clients Say</h2>
 
                 <div class="row">
-
-                    <!-- Start of a single testimonial card (Copy this col-md-4 block to add more) -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0" style="background-color: #ffffff;">
-                            <div class="card-body">
-                                <p class="card-text fst-italic">
-                                    "The venue booking process was seamless! The Garden Plot was perfect for our needs, and the admin panel made it easy to get confirmation quickly."
-                                </p>
-                                <footer class="blockquote-footer mt-3">
-                                    A Happy User from <cite title="Source Title">Rajkot</cite>
-                                </footer>
+                    <asp:Repeater ID="RepeaterReviews" runat="server">
+                        <ItemTemplate>
+                            <div class="col-md-4 mb-4">
+                                <div class="card h-100 shadow-sm border-0" style="background-color: #ffffff;">
+                                    <div class="card-body">
+                                        <p class="card-text fst-italic">
+                                            <%# Eval("comment") %>
+                                        </p>
+                                        <footer class="blockquote-footer mt-3">
+                                            A Happy Customer From <cite title="Source Title"><%# Eval("city") %></cite>
+                                        </footer>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- End of a single testimonial card -->
-
-                    <!-- Example of a second card -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0" style="background-color: #ffffff;">
-                            <div class="card-body">
-                                <p class="card-text fst-italic mb-2">
-                                    "Great selection of venues. The interface is clean and functional, exactly what a busy event planner needs!"
-                                </p>
-                                <footer class="blockquote-footer mt-4">
-                                    Event Planner <cite title="Source Title">Ahmedabad</cite>
-                                </footer>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Example of a third card -->
-                    <div class="col-md-4 mb-4">
-                        <div class="card h-100 shadow-sm border-0" style="background-color: #ffffff;">
-                            <div class="card-body">
-                                <p class="card-text fst-italic">
-                                    "Highly recommended. The support team (admin) was responsive and professional when managing our payment status."
-                                </p>
-                                <footer class="blockquote-footer mt-3">
-                                    Corporate Client <cite title="Source Title">Rajkot</cite>
-                                </footer>
-                            </div>
-                        </div>
-                    </div>
-
+                        </ItemTemplate>
+                    </asp:Repeater>
                 </div>
             </div>
         </section>

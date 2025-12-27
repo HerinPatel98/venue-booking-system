@@ -59,8 +59,7 @@
                         <li id="navDashboard" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/UserDashboard.aspx">Dashboard</a></li>
                         <li id="navAdmin" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Admin/Dashboard.aspx">Admin Panel</a></li>
                         <li id="navLogout" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Logout.aspx">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About.aspx">About Us</a>
-</li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About.aspx">About Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -70,36 +69,39 @@
         <div class="container body-content mt-4">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <hr />
-            <footer class="mt-5">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h4>VenueBook Pro</h4>
-                            <p>Discover seamless event planning with India's Largest Event Booking Portal. Explore a vast array of venues and services, ensuring a perfect match for your occasions.</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Quick Links</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="/" class="nav-link">Home</a></li>
-                                <li><a href="ListVenues.aspx" class="nav-link">Browse Venues</a></li>
-                                <!-- Links you can manage visibility of in C# if needed -->
-                                <li><a href="UserDashboard.aspx" class="nav-link">User Dashboard</a></li>
-                                <li><a href="~/Admin/Dashboard.aspx" class="nav-link">Admin Panel</a></li>
-
-                            </ul>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Contact Us</h4>
-                            <p>Email: info@venuebookpro.com<br />
-                                Phone: +91 9876543210</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <p>&copy; <%: DateTime.Now.Year %> - Venue Booking System | <a href="About.aspx">About Us</a> | <a href="Privacy.aspx">Privacy</a> | <a href="Terms.aspx">Terms</a></p>
-                </div>
-            </footer>
         </div>
+        <hr />
+        <footer class="mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4>VenueBook Pro</h4>
+                        <p>Discover seamless event planning with India's Largest Event Booking Portal. Explore a vast array of venues and services, ensuring a perfect match for your occasions.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Quick Links</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="/" class="nav-link">Home</a></li>
+                            <li><a href="ListVenues.aspx" class="nav-link">Browse Venues</a></li>
+                            <!-- Links you can manage visibility of in C# if needed -->
+                            <li><a href="UserDashboard.aspx" class="nav-link">User Dashboard</a></li>
+                            <li><a href="~/Admin/Dashboard.aspx" class="nav-link">Admin Panel</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Contact Us</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="Contact.aspx" class="nav-link">Get In Touch</a></li>
+                            <li><a href="Contact.aspx" class="nav-link">Contact Admin</a></li>
+                            <li><a href="Contact.aspx" class="nav-link">Newsletter</a></li>
+                            <li><a href="Contact.aspx" class="nav-link">Blogs</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr />
+                <p>&copy; <%: DateTime.Now.Year %> - Venue Booking System | <a href="About.aspx">About Us</a> | <a href="Privacy.aspx">Privacy</a> | <a href="Terms.aspx">Terms</a></p>
+            </div>
+        </footer>
     </form>
      <%-- Bootstrap JS (essential for the responsive navbar functionality) --%>
     <script src="Scripts/bootstrap.bundle.min.js"></script>

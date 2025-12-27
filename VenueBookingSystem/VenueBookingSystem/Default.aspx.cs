@@ -14,6 +14,35 @@ namespace VenueBookingSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             BindTopRatedVenues();
+            BindReview();
+        }
+
+        private void BindReview()
+        {
+            string connStr = System.Configuration.ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
+            string query = @"SELECT TOP 3 
+	            f.Comment AS comment, u.City AS city
+            FROM 
+	            Feedbacks f, Users u
+            WHERE
+	            f.UserId = u.UserId
+            ORDER BY
+	            Rating
+            DESC";
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    RepeaterReviews.DataSource = dt;
+                    RepeaterReviews.DataBind();
+                }
+            }
         }
 
         private void BindTopRatedVenues()

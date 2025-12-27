@@ -126,6 +126,8 @@ footer {
         border: 3px solid white;
         border-radius: 5px;
         padding: 7px;
+        transition: all 0.3s ease-in-out;
+        font-weight: bold;
     }
 
         .carousel-custom-overlay > h5:hover {
