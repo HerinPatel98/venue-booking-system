@@ -30,6 +30,9 @@ body {
             color: #009688; /* Highlight color on hover */
         }
 
+        footer .container p a {
+            color: #009688;
+        }
 /* Venue Image */
 .venue-img {
     height: 250px;
@@ -82,14 +85,19 @@ footer {
     border-color: #00796b;
 }
 
-/* Container needs position relative for overlay positioning */
-.carousel-image-container {
-    position: relative;
-    display: block;
-    overflow: hidden; /* Ensures smooth transition */
-    border-radius: 30px;
-    border: 6px solid #00796b;
-}
+    .btn-primary:hover {
+        background-color: #f0f7f7;
+        border-color: #00796b;
+        color: #00796b;
+    }
+    /* Container needs position relative for overlay positioning */
+    .carousel-image-container {
+        position: relative;
+        display: block;
+        overflow: hidden; /* Ensures smooth transition */
+        border-radius: 30px;
+        border: 6px solid #00796b;
+    }
 
 /* Image styling */
 .venue-carousel-img {

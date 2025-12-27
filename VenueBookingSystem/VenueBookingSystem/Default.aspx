@@ -98,7 +98,7 @@
                                         </div>
 
                                         <div class="d-flex justify-content-between align-items-center">
-                                            <h5 class="text-primary mb-0">₹<%# Eval("BasePrice", "{0:N0}") %></h5>
+                                            <%--<h5 class="text-primary mb-0">₹<%# Eval("BasePrice", "{0:N0}") %></h5>--%>
                                             <a href='VenueDetails.aspx?VenueId=<%# Eval("VenueId") %>' class="btn btn-primary btn-sm">View Details</a>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
 
                     <!-- Login Card (Primary Action - uses the calming teal color) -->
                     <div class="col-md-6">
-                        <div class="card h-100 shadow-sm border-primary" style="background-color: #e0f2f1;">
+                        <div class="card h-100 shadow-sm border-success" style="background-color: #e0f2f1;">
                             <div class="card-body p-5">
                                 <h3 class="card-title mb-3" style="color: #00796b;">Already a User?</h3>
                                 <p class="card-text">Log in to view your dashboard, manage bookings, and make new requests.</p>

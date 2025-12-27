@@ -13,5 +13,17 @@ namespace VenueBookingSystem
         {
 
         }
+        protected void btnSend_Click(object sender, EventArgs e)
+        {
+            // Simulating message submission
+            lblStatus.Text = "Thank you! Your message has been sent successfully.";
+            lblStatus.Visible = true;
+
+            // Clear fields
+            txtName.Text = "";
+            txtEmail.Text = "";
+            txtMessage.Text = "";
+        }
+
     }
 }

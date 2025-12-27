@@ -59,6 +59,8 @@
                         <li id="navDashboard" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/UserDashboard.aspx">Dashboard</a></li>
                         <li id="navAdmin" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Admin/Dashboard.aspx">Admin Panel</a></li>
                         <li id="navLogout" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Logout.aspx">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About.aspx">About Us</a>
+</li>
                     </ul>
                 </div>
             </div>
@@ -84,6 +86,7 @@
                                 <!-- Links you can manage visibility of in C# if needed -->
                                 <li><a href="UserDashboard.aspx" class="nav-link">User Dashboard</a></li>
                                 <li><a href="~/Admin/Dashboard.aspx" class="nav-link">Admin Panel</a></li>
+
                             </ul>
                         </div>
                         <div class="col-md-4">
@@ -93,7 +96,7 @@
                         </div>
                     </div>
                     <hr />
-                    <p>&copy; <%: DateTime.Now.Year %> - Venue Booking System | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
+                    <p>&copy; <%: DateTime.Now.Year %> - Venue Booking System | <a href="About.aspx">About Us</a> | <a href="Privacy.aspx">Privacy</a> | <a href="Terms.aspx">Terms</a></p>
                 </div>
             </footer>
         </div>
