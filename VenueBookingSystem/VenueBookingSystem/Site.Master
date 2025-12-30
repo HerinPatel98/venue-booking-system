@@ -58,17 +58,39 @@
                         
                         <li id="navDashboard" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/UserDashboard.aspx">Dashboard</a></li>
                         <li id="navAdmin" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Admin/Dashboard.aspx">Admin Panel</a></li>
-                        <li id="navLogout" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Logout.aspx">Logout</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About.aspx">About Us</a></li>
+                        <%--<li id="navAbout" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/About.aspx">About Us</a></li>--%>
+                        <li id="navLogout" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Logout.aspx" style="color: lightcoral;">Logout</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        <!-- Main Content Area -->
-        <div class="container body-content mt-4">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
+        <div class="d-flex" id="wrapper">
+            <!-- Admin Sidebar (Only visible if UserRole is Admin) -->
+            <asp:PlaceHolder ID="phAdminSidebar" runat="server" Visible="false">
+                <div class="admin-sidebar shadow-lg" id="sidebar-wrapper" style="width: 250px; background-color: #263238;">
+                    <div class="sidebar-heading p-4 text-white border-bottom border-secondary">
+                        <h5 class="m-0">Admin Panel</h5>
+                    </div>
+                    <div class="list-group list-group-flush p-2">
+                        <a href="~/Admin/Dashboard.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">📊 Dashboard</a>
+                         <a href="Default.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">🏠 Home</a>
+                        <hr />
+                        <a href="~/Admin/ManageBookings.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">📅 Manage Bookings</a>
+                        <a href="~/Admin/ManageVenues.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">🏢 Manage Venues</a>
+                        <a href="~/Admin/ManageUsers.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">👥 User Directory</a>
+                        <hr />
+                         <a href="~/ListVenues.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">👤 User Dashboard</a>
+                         <a href="~/UserDashboard.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">📖 Book Venue</a>
+                    </div>
+                </div>
+            </asp:PlaceHolder>
+
+            <!-- Main Content Area -->
+            <div id="page-content-wrapper" class="flex-grow-1 p-4">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
         <hr />
         <footer class="mt-5">
@@ -85,7 +107,7 @@
                             <li><a href="ListVenues.aspx" class="nav-link">Browse Venues</a></li>
                             <!-- Links you can manage visibility of in C# if needed -->
                             <li><a href="UserDashboard.aspx" class="nav-link">User Dashboard</a></li>
-                            <li><a href="~/Admin/Dashboard.aspx" class="nav-link">Admin Panel</a></li>
+                            <li><a href="Admin/Dashboard.aspx" class="nav-link">Admin Panel</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4">

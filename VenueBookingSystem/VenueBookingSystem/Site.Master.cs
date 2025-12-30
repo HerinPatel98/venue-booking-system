@@ -26,6 +26,16 @@ namespace VenueBookingSystem
                 {
                     navAdmin.Visible = true; // Show the admin panel link
                 }
+
+                if (Session["IsUserLoggedIn"] != null && (bool)Session["IsUserLoggedIn"] == true)
+                {
+                    string role = Session["UserRole"]?.ToString();
+                    if (role == "Admin")
+                    {
+                        phAdminSidebar.Visible = true; // Show sidebar
+                        //navAbout.Visible = false;
+                    }
+                }
             }
             else
             {
