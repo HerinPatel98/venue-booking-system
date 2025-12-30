@@ -12,7 +12,7 @@ namespace VenueBookingSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             // 1. Manual security check using Session variables
-            if (Session["IsUserLoggedIn"] == null || !(bool)Session["IsUserLoggedIn"] || Session["UserRole"].ToString() != "User")
+            if (Session["IsUserLoggedIn"] == null || !(bool)Session["IsUserLoggedIn"])
             {
                 // Redirect unauthorized users to the login page
                 Response.Redirect("~/Login.aspx");
@@ -22,6 +22,11 @@ namespace VenueBookingSystem
             if (Session["FullName"] != null)
             {
                 lblFullName.Text = Session["FullName"].ToString();
+            }
+
+            if (Request.QueryString["status"] == "success")
+            {
+                phSuccessMessage.Visible = true;
             }
         }
     }

@@ -2,6 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+     <!-- Simple Success Message -->
+    <asp:PlaceHolder ID="phSuccessMessage" runat="server" Visible="false">
+        <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
+            <strong>Success!</strong> Your booking request has been sent to the Admin for approval.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </asp:PlaceHolder>
+
      <!-- Welcome Section using a card component with integrated buttons -->
     <div class="card shadow-sm mb-4" style="background-color: #e0f2f1; border-color: #009688;">
         <div class="card-body">
