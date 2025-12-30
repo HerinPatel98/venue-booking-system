@@ -17,16 +17,36 @@ namespace VenueBookingSystem
         {
             if (!IsPostBack)
             {
+                // Sets the minimum selectable date to Today (format: YYYY-MM-DD)
+                txtBookingDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+                // Optional: Set default value to today so it's not empty
+                txtBookingDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+               
+
                 //BindRepeater();
                 PopulateVenueTypeCheckboxes();
-                PopulateCityCheckboxes();
+                PopulateCityCheckboxes(); 
+                
+                if (Session["UserCity"] != null)
+                {
+                    string loggedInUserCity = Session["UserCity"].ToString().TrimEnd();
+
+                    // 3. Try to find and check this city in our filter list
+                    ListItem cityItem = cblCity.Items.FindByValue(loggedInUserCity);
+                    if (cityItem != null)
+                    {
+                        cityItem.Selected = true; // Auto-check the user's home city
+                        BindRepeater();
+                    }
+                }
             }
-            if (Session["IsUserLoggedIn"] == null || !(bool)Session["IsUserLoggedIn"] || Session["UserRole"].ToString() != "User")
+
+            if (Session["IsUserLoggedIn"] == null || !(bool)Session["IsUserLoggedIn"] )
             {
                 // Redirect unauthorized users to the login page
                 Response.Redirect("~/Login.aspx");
-            }
-            
+            }            
         }
 
         protected void btnApplyFilters_Click(object sender, EventArgs e)

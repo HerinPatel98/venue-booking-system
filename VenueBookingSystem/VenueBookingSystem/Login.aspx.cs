@@ -30,13 +30,14 @@ namespace VenueBookingSystem
             bool isAuthenticated = false;
             string userRole = "";
             string fullName = "";
+            string city = "";
             int userId = 0;
 
             // 1. Check database for user credentials using ADO.NET
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
 
-                string query = "SELECT UserId, PasswordHash, Role, FullName FROM Users WHERE Email = @Email";
+                string query = "SELECT UserId, PasswordHash, Role, FullName, City FROM Users WHERE Email = @Email";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -55,6 +56,7 @@ namespace VenueBookingSystem
                                 userId = Convert.ToInt32(reader["UserId"]);
                                 userRole = reader["Role"].ToString();
                                 fullName = reader["FullName"].ToString();
+                                city = reader["City"].ToString().Trim();
                             }
                         }
                     }
@@ -71,6 +73,7 @@ namespace VenueBookingSystem
                 Session["CurrentUsername"] = email;
                 Session["UserRole"] = userRole;
                 Session["FullName"] = fullName;
+                Session["UserCity"] = city;
 
                 // Redirect based on the user's role
                 if (userRole == "Admin")

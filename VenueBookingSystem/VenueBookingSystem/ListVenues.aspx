@@ -69,7 +69,7 @@
                                         </ul>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <h5 class="text-primary">₹<%# Eval("BasePrice", "{0:N0}") %></h5>
-                                            <a href='VenueDetails.aspx?VenueId=<%# Eval("VenueId") %>' class="btn btn-primary">Book Now</a>
+                                           <a href='VenueDetails.aspx?VenueId=<%# Eval("VenueId") %>&date=<%# txtBookingDate.Text %>' class="btn btn-primary">Book Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +77,6 @@
                         </div>
                     </ItemTemplate>
                 </asp:Repeater>
-
                 <asp:Label ID="lblNoVenues" runat="server" Text="No venues found matching your criteria." Visible="false" CssClass="alert alert-info"></asp:Label>
             </div>
         </div>
