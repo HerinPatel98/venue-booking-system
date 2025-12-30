@@ -7,6 +7,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+    cursor: default;
+}
+
 /* Custom Navbar styling (override Bootstrap defaults for a cool/calm look) */
 .navbar-custom {
     background-color: #ffffff; /* White navbar background */
@@ -33,6 +37,7 @@ body {
         footer .container p a {
             color: #009688;
         }
+
 /* Venue Image */
 .venue-img {
     height: 250px;
@@ -167,3 +172,33 @@ footer {
         transform: translateY(-10px);
         box-shadow: 0 10px 20px rgba(0, 150, 136, 0.2) !important;
     }
+
+/* Admin Specific Styles */
+.admin-sidebar {
+    background: linear-gradient(270deg, #333, #10524c);
+    min-height: 100vh;
+    color: white;
+}
+
+.admin-card-gold {
+    border-left: 5px solid #FFD700 !important; /* Gold Accent */
+    background-color: #fffdf0;
+}
+
+.admin-card-teal {
+    border-left: 5px solid #009688 !important; /* Teal Accent */
+    background-color: #f0fafa;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #263238;
+}
+
+.stat-label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: #546e7a;
+}
