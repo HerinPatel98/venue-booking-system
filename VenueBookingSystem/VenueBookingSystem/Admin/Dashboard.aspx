@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="Admin Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="VenueBookingSystem.Admin.Dashboard" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+
+<asp:Content ContentPlaceHolderID="BreadcrumbContent" runat="server">
+    <span class="fw-bold" style="color: #004d40;">Admin Dashboard</span>
+</asp:Content>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      <div class="container-fluid mt-4">
         <h2 class="mb-4" style="color: #263238;">Admin Control Center <small class="text-muted">| Golden Petal Venues</small></h2>
