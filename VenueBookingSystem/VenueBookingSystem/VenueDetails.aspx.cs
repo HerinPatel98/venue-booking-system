@@ -12,25 +12,29 @@ namespace VenueBookingSystem
     public partial class VenueDetails : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        { 
+            // Sets the minimum selectable date to Today (format: YYYY-MM-DD)
+            txtBookingDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+            
+            
             if (!IsPostBack)
             {
-                // Sets the minimum selectable date to Today (format: YYYY-MM-DD)
-                txtBookingDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
                 // Optional: Set default value to today so it's not empty
                 txtBookingDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
 
                 string vId = Request.QueryString["VenueId"];
                 string date = Request.QueryString["date"];
 
-                if (!string.IsNullOrEmpty(vId))
-                {
-                    LoadVenue(vId);
-                }
                 if (!string.IsNullOrEmpty(date))
                 {
                     txtBookingDate.Text = date;
                 }
+
+                if (!string.IsNullOrEmpty(vId))
+                {
+                    LoadVenue(vId);
+                }
+               
                 CalculateTotal(null, null); // Initial math
             }
         }
@@ -43,10 +47,13 @@ namespace VenueBookingSystem
                 string query = "SELECT V.*, (SELECT ISNULL(AVG(CAST(Rating AS DECIMAL(10,2))), 0) FROM Feedbacks WHERE VenueId = V.VenueId) as AvgRating, " +
                                "(SELECT COUNT(*) FROM Feedbacks WHERE VenueId = V.VenueId) as ReviewCount " +
                                "FROM Venues V WHERE V.VenueId = @id";
+
                 SqlCommand cmd = new SqlCommand(query, sqlConn);
                 cmd.Parameters.AddWithValue("@id", id);
                 sqlConn.Open();
+
                 SqlDataReader r = cmd.ExecuteReader();
+
                 if (r.Read())
                 {
                     lblVenueName.Text = r["Name"].ToString();
@@ -90,26 +97,18 @@ namespace VenueBookingSystem
                 return;
             }
 
-            DateTime selectedDate;
-            bool isValidDate = DateTime.TryParse(txtBookingDate.Text, out selectedDate);
-
-            if (!isValidDate || selectedDate.Date < DateTime.Today)
-            {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Please select a valid future date!');", true);
-                return; // This "return" stops the rest of the code from running
-            }
-
             string venueId = Request.QueryString["VenueId"];
             string bookingDate = txtBookingDate.Text;
+
             int userId = Convert.ToInt32(Session["UserId"]);
             decimal totalCost = Convert.ToDecimal(lblTotalPrice.Text.Replace(",", ""));
 
             // 2. Simple Date Validation
-            if (string.IsNullOrEmpty(bookingDate) || DateTime.Parse(bookingDate) < DateTime.Now)
-            {
-                // You could add an error label here
-                return;
-            }
+            //if (string.IsNullOrEmpty(bookingDate) || DateTime.Parse(bookingDate) < DateTime.Now)
+            //{
+            //    // You could add an error label here
+            //    return;
+            //}
 
             string connString = System.Configuration.ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
 

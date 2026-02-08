@@ -85,7 +85,8 @@
                         </div>
 
                         <asp:Button ID="btnRequestBooking" runat="server" Text="Request to Book" 
-                            OnClick="btnRequestBooking_Click" CssClass="btn btn-primary btn-lg w-100 py-3 shadow-sm fw-bold" />
+                            OnClick="btnRequestBooking_Click" 
+                            CssClass="btn btn-primary btn-lg w-100 py-3 shadow-sm fw-bold" />
                         
                         <p class="text-muted small text-center mt-3 mb-0">
                             No immediate payment required. Admin will review and confirm availability.
