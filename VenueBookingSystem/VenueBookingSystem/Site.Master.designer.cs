@@ -24,6 +24,24 @@ namespace VenueBookingSystem
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
 
         /// <summary>
+        /// navbar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navbar;
+
+        /// <summary>
+        /// navDashboard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navDashboard;
+
+        /// <summary>
         /// navLogin control.
         /// </summary>
         /// <remarks>
@@ -42,15 +60,6 @@ namespace VenueBookingSystem
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navRegister;
 
         /// <summary>
-        /// navDashboard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navDashboard;
-
-        /// <summary>
         /// navAdmin control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,24 @@ namespace VenueBookingSystem
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navLogout;
+
+        /// <summary>
+        /// lnkHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkHome;
+
+        /// <summary>
+        /// BreadcrumbContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder BreadcrumbContent;
 
         /// <summary>
         /// phAdminSidebar control.

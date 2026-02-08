@@ -15,6 +15,24 @@ namespace VenueBookingSystem
     {
 
         /// <summary>
+        /// lnkHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkHome;
+
+        /// <summary>
+        /// lnkDb control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkDb;
+
+        /// <summary>
         /// imgVenue control.
         /// </summary>
         /// <remarks>

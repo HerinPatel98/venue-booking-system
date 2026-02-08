@@ -1,17 +1,18 @@
-﻿<%@ Page Title="Book Your Spot" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VenueDetails.aspx.cs" Inherits="VenueBookingSystem.VenueDetails" %>
+﻿<%@ Page Title="Book Venue" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="VenueDetails.aspx.cs" Inherits="VenueBookingSystem.VenueDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+
+<asp:Content ContentPlaceHolderID="BreadcrumbContent" runat="server">
+    <a id="lnkHome" runat="server" href="/UserDashboard.aspx" class="text-decoration-none" style="color: #00796b;">My Dashboard</a>
+    <span class="mx-2 text-muted">/</span>
+    <a id="lnkDb" runat="server" href="/ListVenues.aspx" class="text-decoration-none" style="color: #00796b;">All Venues</a>
+    <span class="mx-2 text-muted">/</span>
+    <span class="fw-bold" style="color: #004d40;">Book Venue</span>
+</asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-3 mb-5">
-        <!-- Breadcrumb Navigation -->
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-transparent p-0">
-                <li class="breadcrumb-item"><a href="Default.aspx" class="text-decoration-none">Home</a></li>
-                <li class="breadcrumb-item"><a href="ListVenues.aspx" class="text-decoration-none">Venues</a></li>
-                <li class="breadcrumb-item active">Details</li>
-            </ol>
-        </nav>
-
         <div class="row g-4 mt-2">
             <!-- LEFT COLUMN: Image & Info -->
             <div class="col-md-8">
@@ -45,7 +46,7 @@
                     <h5 class="fw-bold mb-3" style="color: #00796b;">Additional Amenities</h5>
                     <div class="row bg-light p-3 rounded border">
                         <div class="col-md-6">
-                            <asp:CheckBox ID="chkCatering" runat="server" Text=" &nbsp; Catering Service (₹500/guest)" CssClass="form-check-label mb-2 d-block" AutoPostBack="true" OnCheckedChanged="CalculateTotal" />
+                            <asp:CheckBox ID="chkCatering" runat="server" Text=" &nbsp; Catering Service" CssClass="form-check-label mb-2 d-block" AutoPostBack="true" OnCheckedChanged="CalculateTotal" />
                             <asp:CheckBox ID="chkDecoration" runat="server" Text=" &nbsp; Theme Decoration (₹5,000)" CssClass="form-check-label mb-2 d-block" AutoPostBack="true" OnCheckedChanged="CalculateTotal" />
                         </div>
                         <div class="col-md-6">

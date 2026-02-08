@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="User Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserDashboard.aspx.cs" Inherits="VenueBookingSystem.UserDashboard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+
+<asp:Content ContentPlaceHolderID="BreadcrumbContent" runat="server">
+    <span class="fw-bold" style="color: #004d40;">My Dashboard</span>
+</asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
      <!-- Simple Success Message -->
     <asp:PlaceHolder ID="phSuccessMessage" runat="server" Visible="false">

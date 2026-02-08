@@ -55,7 +55,6 @@ namespace VenueBookingSystem
                     ViewState["BasePrice"] = r["BasePrice"]; // Save for math
                     lblCity.Text = r["City"].ToString();
                     lblCapacity.Text = r["Capacity"].ToString();
-                    ViewState["Capacity"] = r["Capacity"]; // Save for catering math
                     imgVenue.ImageUrl = r["ImageUrl"].ToString();
                     lblAvgRating.Text = Convert.ToDecimal(r["AvgRating"]).ToString("F1");
                     lblReviewCount.Text = r["ReviewCount"].ToString();
@@ -121,6 +120,7 @@ namespace VenueBookingSystem
                 // 3. Final Availability Check (Last line of defense)
                 string checkQuery = "SELECT COUNT(*) FROM Bookings WHERE VenueId = @vid AND BookingDate = @bdate AND BookingStatus = 'Confirmed'";
                 SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+
                 checkCmd.Parameters.AddWithValue("@vid", venueId);
                 checkCmd.Parameters.AddWithValue("@bdate", bookingDate);
 

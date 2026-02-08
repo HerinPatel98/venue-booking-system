@@ -14,7 +14,7 @@
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/Site.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>   
@@ -41,22 +41,22 @@
         </asp:ScriptManager>
         
         <!-- Navigation Bar -->
-        <nav class="navbar navbar-expand-sm navbar-custom">
+        <nav id="navbar" class="navbar navbar-expand-sm navbar-custom" runat="server">
             <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">VenueBook Pro</a>
+                <a class="navbar-brand" runat="server" href="~/">Golden Petal Venues</a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
+                        <li id="navDashboard" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/UserDashboard.aspx">Dashboard</a></li>                        
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/ListVenues.aspx">Browse Venues</a></li>
                         
                         <%-- Links we will control with C# in the code-behind file --%>
                         <li id="navLogin" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/Login.aspx">Login</a></li>
                         <li id="navRegister" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/Register.aspx">Register</a></li>
                         
-                        <li id="navDashboard" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/UserDashboard.aspx">Dashboard</a></li>
                         <li id="navAdmin" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Admin/Dashboard.aspx">Admin Panel</a></li>
                         <%--<li id="navAbout" runat="server" class="nav-item"><a class="nav-link" runat="server" href="~/About.aspx">About Us</a></li>--%>
                         <li id="navLogout" runat="server" Visible="false" class="nav-item"><a class="nav-link" runat="server" href="~/Logout.aspx" style="color: lightcoral;">Logout</a></li>
@@ -65,10 +65,43 @@
             </div>
         </nav>
 
+        <!-- Hierarchical Breadcrumb Navigation -->
+        <nav aria-label="breadcrumb" class="sticky-top w-auto bg-white border-bottom shadow-sm" style="top: 6px; z-index: 2020;">
+            <div class="container-fluid py-2 d-flex justify-content-end">
+                <ol class="breadcrumb mb-0">
+                    <!-- Parent Level -->
+                    <li class="breadcrumb-item">
+                        <a id="lnkHome" runat="server"
+                            href='<%# Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin" ? "~/Admin/AdminDashboard.aspx" : "~/Default.aspx" %>'
+                            class="text-decoration-none" style="color: #00796b;">Home
+                        </a>
+                    </li>
+
+                    <!-- Dynamic Current Page (Placeholder) -->
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <asp:ContentPlaceHolder ID="BreadcrumbContent" runat="server">
+                            <!-- Current page title goes here -->
+                        </asp:ContentPlaceHolder>
+                    </li>
+                </ol>
+            </div>
+        </nav>
+
+       <%-- <!-- Sticky Quick-Back Navigation -->
+        <div class="sticky-top" style="top: 60px; z-index: 1020;">
+            <div class="container-fluid d-flex justify-content-end p-2">
+                <button type="button" onclick="window.history.back();"
+                    class="btn btn-sm shadow-sm d-flex align-items-center fw-bold"
+                    style="background-color: #e0f2f1; color: #00796b; border: 1px solid #b2dfdb; border-radius: 20px; padding: 5px 15px;">
+                    <span style="font-size: 1.2rem; margin-right: 8px;">←</span> Back
+                </button>
+            </div>
+        </div>--%>
+
         <div class="d-flex" id="wrapper">
             <!-- Admin Sidebar (Only visible if UserRole is Admin) -->
             <asp:PlaceHolder ID="phAdminSidebar" runat="server" Visible="false">
-                <div class="admin-sidebar shadow-lg" id="sidebar-wrapper" style="width: 250px; background-color: #263238;">
+                <div class="admin-sidebar shadow-lg sticky-top m-3 rounded-2 sticky-top" id="sidebar-wrapper">
                     <div class="sidebar-heading p-4 text-white border-bottom border-secondary">
                         <h5 class="m-0">Admin Panel</h5>
                     </div>
@@ -78,10 +111,10 @@
                         <hr />
                         <a href="~/Admin/ManageBookings.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">📅 Manage Bookings</a>
                         <a href="~/Admin/ManageVenues.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">🏢 Manage Venues</a>
-                        <a href="~/Admin/ManageUsers.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">👥 User Directory</a>
+                        <a href="~/Admin/ManageUsers.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1"><span class="bg-light rounded-top fs-5">👥</span> User Directory</a>
                         <hr />
-                         <a href="~/ListVenues.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">👤 User Dashboard</a>
-                         <a href="~/UserDashboard.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">📖 Book Venue</a>
+                         <a href="UserDashboard.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1"><span class="bg-light rounded-top">👤</span> User Dashboard</a>
+                         <a href="ListVenues.aspx" runat="server" class="list-group-item list-group-item-action text-white bg-transparent border-0 mb-1">📖 Book Venue</a>
                     </div>
                 </div>
             </asp:PlaceHolder>
@@ -126,7 +159,7 @@
         </footer>
     </form>
      <%-- Bootstrap JS (essential for the responsive navbar functionality) --%>
-    <script src="Scripts/bootstrap.bundle.min.js"></script>
+    <script src="../Scripts/bootstrap.bundle.min.js"></script>
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>

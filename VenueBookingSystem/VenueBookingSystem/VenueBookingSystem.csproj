@@ -101,6 +101,9 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\ManageBookings.aspx" />
+    <Content Include="Admin\ManageVenues.aspx" />
+    <Content Include="Admin\VenueForm.aspx" />
     <Content Include="App_Data\MyBookingDB.mdf" />
     <Content Include="App_Data\MyBookingDB_log.ldf">
       <DependentUpon>MyBookingDB.mdf</DependentUpon>
@@ -141,6 +144,7 @@
     <Content Include="ListVenues.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="MyBookings.aspx" />
     <Content Include="Privacy.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -215,6 +219,27 @@
     <Compile Include="Admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ManageBookings.aspx.cs">
+      <DependentUpon>ManageBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageBookings.aspx.designer.cs">
+      <DependentUpon>ManageBookings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManageVenues.aspx.cs">
+      <DependentUpon>ManageVenues.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManageVenues.aspx.designer.cs">
+      <DependentUpon>ManageVenues.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\VenueForm.aspx.cs">
+      <DependentUpon>VenueForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\VenueForm.aspx.designer.cs">
+      <DependentUpon>VenueForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -261,6 +286,13 @@
     </Compile>
     <Compile Include="Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyBookings.aspx.cs">
+      <DependentUpon>MyBookings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyBookings.aspx.designer.cs">
+      <DependentUpon>MyBookings.aspx</DependentUpon>
     </Compile>
     <Compile Include="PasswordHasher.cs" />
     <Compile Include="Privacy.aspx.cs">
