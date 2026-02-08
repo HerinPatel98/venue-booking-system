@@ -24,6 +24,15 @@ namespace VenueBookingSystem
         protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkManageVenues;
 
         /// <summary>
+        /// lblDebug control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDebug;
+
+        /// <summary>
         /// gvUserBookings control.
         /// </summary>
         /// <remarks>

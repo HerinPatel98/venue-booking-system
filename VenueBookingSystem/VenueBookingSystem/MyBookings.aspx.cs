@@ -8,76 +8,107 @@ namespace VenueBookingSystem
 {
     public partial class MyBookings : System.Web.UI.Page
     {
+        string ConnString = ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            // 2026 Security: Ensure user is logged in
             if (Session["UserId"] == null)
             {
                 Response.Redirect("~/Login.aspx");
+                return;
             }
 
-            if (!IsPostBack)
-            {
-                LoadUserBookings();
-            }
+            // FORCE LOAD EVERY TIME
+            // This fixes the "Disappearing Grid" issue by ensuring data is always bound
+            // before any events fire.
+            LoadUserBookings();
         }
 
         private void LoadUserBookings()
         {
-            string connString = ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
-            int currentUserId = Convert.ToInt32(Session["UserId"]);
-
-            using (SqlConnection conn = new SqlConnection(connString))
+            try
             {
-                // JOIN Bookings with Venues to show the Venue Name instead of an ID
-                string query = @"SELECT B.BookingId, V.Name as VenueName, B.BookingDate, 
-                                 B.BookingStatus, B.TotalCost 
-                                 FROM Bookings B 
-                                 JOIN Venues V ON B.VenueId = V.VenueId 
-                                 WHERE B.UserId = @uid 
-                                 ORDER BY B.BookingDate DESC";
+                int currentUserId = Convert.ToInt32(Session["UserId"]);
 
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@uid", currentUserId);
+                using (SqlConnection conn = new SqlConnection(ConnString))
+                {
+                    string query = @"SELECT B.BookingId, V.Name as VenueName, B.BookingDate, 
+                                     B.BookingStatus, B.TotalCost 
+                                     FROM Bookings B 
+                                     JOIN Venues V ON B.VenueId = V.VenueId 
+                                     WHERE B.UserId = @uid 
+                                     ORDER BY B.BookingDate DESC";
 
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@uid", currentUserId);
 
-                gvUserBookings.DataSource = dt;
-                gvUserBookings.DataBind();
+                    conn.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    gvUserBookings.DataSource = dt;
+                    gvUserBookings.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                lblDebug.Text = "LOAD ERROR: " + ex.Message;
             }
         }
 
         protected void gvUserBookings_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            // Simple CRUD: Handle the "Cancel" action
+            // Clear previous messages
+            lblDebug.Text = "";
+
             if (e.CommandName == "CancelBooking")
             {
-                int bookingId = Convert.ToInt32(e.CommandArgument);
-                UpdateBookingStatus(bookingId, "Cancelled");
+                try
+                {
+                    // DEBUG: Show exactly what we are trying to cancel
+                    string arg = e.CommandArgument.ToString();
+                    lblDebug.Text = "Attempting to cancel Booking ID: " + arg;
+
+                    int bookingId = Convert.ToInt32(arg);
+                    bool success = UpdateBookingStatus(bookingId, "Cancelled");
+
+                    if (success)
+                    {
+                        lblDebug.Text = "SUCCESS: Booking cancelled.";
+                        lblDebug.ForeColor = System.Drawing.Color.Green;
+
+                        // Reload to show the new "Cancelled" status
+                        LoadUserBookings();
+                    }
+                    else
+                    {
+                        lblDebug.Text = "FAILURE: Could not cancel. It might not be 'Pending' anymore.";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblDebug.Text = "COMMAND ERROR: " + ex.Message;
+                }
             }
         }
 
-        private void UpdateBookingStatus(int bId, string status)
+        private bool UpdateBookingStatus(int bId, string status)
         {
-            string connString = ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn = new SqlConnection(ConnString))
             {
-                // Update status to Cancelled (Simple Delete-alternative for history)
-                string query = "UPDATE Bookings SET BookingStatus = @status WHERE BookingId = @bid";
+                string query = @"UPDATE Bookings 
+                                SET BookingStatus = @status 
+                                WHERE BookingId = @bid 
+                                AND BookingStatus = 'Pending'"; // STRICT CHECK
+
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@status", status);
                 cmd.Parameters.AddWithValue("@bid", bId);
 
                 conn.Open();
-                cmd.ExecuteNonQuery();
-
-                // Refresh the table
-                LoadUserBookings();
-
-                // Optional: Browser alert for success
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Booking has been cancelled successfully.');", true);
+                int rows = cmd.ExecuteNonQuery();
+                return rows > 0;
             }
         }
     }

@@ -14,16 +14,14 @@ namespace VenueBookingSystem
     public partial class ListVenues : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {  
+            // Sets the minimum selectable date to Today (format: YYYY-MM-DD)
+            txtBookingDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+        
             if (!IsPostBack)
-            {
-                // Sets the minimum selectable date to Today (format: YYYY-MM-DD)
-                txtBookingDate.Attributes["min"] = DateTime.Now.ToString("yyyy-MM-dd");
+            {    
                 // Optional: Set default value to today so it's not empty
                 txtBookingDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-
-               
-
                 //BindRepeater();
                 PopulateVenueTypeCheckboxes();
                 PopulateCityCheckboxes(); 

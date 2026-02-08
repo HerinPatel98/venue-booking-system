@@ -36,7 +36,7 @@
                     <div class="card-body">
                          <%-- Date Picker Input --%>
                          <h6 class="card-title">Booking Date</h6>
-                         <asp:TextBox ID="txtBookingDate" runat="server" CssClass="form-control mb-3" TextMode="Date"></asp:TextBox>
+                         <asp:TextBox ID="txtBookingDate" runat="server" CssClass="form-control mb-3" TextMode="Date" AutoPostBack="true"></asp:TextBox>
                         
                         <%-- City Checkboxes --%>
                         <h6 class="card-title">City</h6>
