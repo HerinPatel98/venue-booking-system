@@ -176,7 +176,8 @@ footer {
 /* Admin Specific Styles */
 .admin-sidebar {
     background: linear-gradient(270deg, #333, #10524c);
-    min-height: 100vh;
+    max-height: 100vh;
+    min-width: 20vw;
     color: white;
 }
 

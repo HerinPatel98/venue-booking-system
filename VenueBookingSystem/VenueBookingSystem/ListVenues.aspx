@@ -6,8 +6,20 @@
             width: 100%; 
             object-fit: cover; 
         }
+
+        h6 {
+            color: #00796b;
+        }
     </style>
 </asp:Content>
+
+<asp:Content ContentPlaceHolderID="BreadcrumbContent" runat="server">
+    <a id="lnkManageVenues" runat="server" href="/UserDashboard.aspx" class="text-decoration-none" style="color: #00796b;">My Dashboard</a>
+    <span class="mx-2 text-muted">/</span>
+    <span class="fw-bold" style="color: #004d40;">All Venues</span>
+</asp:Content>
+
+
 <asp:Content ID="ContentListBody" ContentPlaceHolderID="MainContent" runat="server">
      <div class="container-fluid mt-4">
         <h1 style="color: #00796b;">Available Venues</h1>
@@ -17,29 +29,29 @@
             
             <!-- Left Column: Sidebar Filters (col-md-3) -->
             <div class="col-md-3">
-                <div class="card shadow-sm mb-4">
+                <div class="card shadow-sm mb-4 sticky-md-top">
                     <div class="card-header" style="background-color: #e0f2f1;">
                         <strong>Filter Venues</strong>
                     </div>
                     <div class="card-body">
                          <%-- Date Picker Input --%>
-                         <h6 class="card-title" style="color: #00796b;">Booking Date</h6>
+                         <h6 class="card-title">Booking Date</h6>
                          <asp:TextBox ID="txtBookingDate" runat="server" CssClass="form-control mb-3" TextMode="Date"></asp:TextBox>
                         
                         <%-- City Checkboxes --%>
-                        <h6 class="card-title" style="color: #00796b;">City</h6>
+                        <h6 class="card-title">City</h6>
                         <asp:CheckBoxList ID="cblCity" runat="server" CssClass="list-unstyled mb-3">
                             <%-- Dynamically cities will get added here --%>
                         </asp:CheckBoxList>
 
                         <%-- Venue Type Checkboxes --%>
-                        <h6 class="card-title" style="color: #00796b;">Venue Type</h6>
+                        <h6 class="card-title">Venue Type</h6>
                         <asp:CheckBoxList ID="cblVenueType" runat="server" CssClass="list-unstyled mb-3">
                             <%-- Dynamically Venue types will add here --%>
                         </asp:CheckBoxList>
 
                         <%-- Capacity Input --%>
-                         <h6 class="card-title" style="color: #00796b;">Minimum Capacity</h6>
+                         <h6 class="card-title">Minimum Capacity</h6>
                          <asp:TextBox ID="txtCapacity" runat="server" CssClass="form-control mb-3" TextMode="Number" placeholder="Min guests"></asp:TextBox>
 
                         <%-- The Filter Button (needed to trigger postback in Web Forms) --%>
