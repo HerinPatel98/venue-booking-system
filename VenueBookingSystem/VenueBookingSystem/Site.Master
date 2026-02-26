@@ -72,7 +72,7 @@
                     <!-- Parent Level -->
                     <li class="breadcrumb-item">
                         <a id="lnkHome" runat="server"
-                            href='<%# Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin" ? "~/Admin/AdminDashboard.aspx" : "~/Default.aspx" %>'
+                            href='<%# Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin" ? "~/Admin/Dashboard.aspx" : "~/Default.aspx" %>'
                             class="text-decoration-none" style="color: #00796b;">Home
                         </a>
                     </li>

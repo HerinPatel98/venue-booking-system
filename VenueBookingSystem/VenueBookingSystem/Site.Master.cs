@@ -14,7 +14,8 @@ namespace VenueBookingSystem
         {
             if (Session["IsUserLoggedIn"] != null && (bool)Session["IsUserLoggedIn"] == true)
             {
-                this.DataBind();
+                //this.DataBind();
+
                 // If logged in: Hide Login/Register, Show Dashboard/Logout
                 navLogin.Visible = false;
                 navRegister.Visible = false;
