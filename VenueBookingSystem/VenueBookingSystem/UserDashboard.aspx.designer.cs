@@ -24,6 +24,15 @@ namespace VenueBookingSystem
         protected global::System.Web.UI.WebControls.PlaceHolder phSuccessMessage;
 
         /// <summary>
+        /// lblSuccessText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSuccessText;
+
+        /// <summary>
         /// lblFullName control.
         /// </summary>
         /// <remarks>
@@ -31,5 +40,14 @@ namespace VenueBookingSystem
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFullName;
+
+        /// <summary>
+        /// gvRecentBookings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvRecentBookings;
     }
 }
