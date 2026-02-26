@@ -8,18 +8,21 @@
     City NVARCHAR(20) NULL
 );
 
-CREATE TABLE Venues (
-    VenueId INT IDENTITY(1,1) PRIMARY KEY,
-    Name NVARCHAR(100) NOT NULL,
-    Description NVARCHAR(MAX) NOT NULL,
-    VenueType NVARCHAR(50) NOT NULL,
-    Capacity INT NOT NULL,
-    BasePrice DECIMAL(10, 2) NOT NULL,
-    City NVARCHAR(100) NOT NULL,
-    ContactEmail NVARCHAR(100) NULL,
-    ContactPhone NVARCHAR(20) NULL,
-    IsAvailable BIT NOT NULL DEFAULT 1
+CREATE TABLE [dbo].[Venues] (
+    [VenueId]      INT             IDENTITY (1, 1) NOT NULL,
+    [Name]         NVARCHAR (100)  NOT NULL,
+    [Description]  NVARCHAR (MAX)  NOT NULL,
+    [VenueType]    NVARCHAR (50)   NOT NULL,
+    [Capacity]     INT             NOT NULL,
+    [BasePrice]    DECIMAL (10, 2) NOT NULL,
+    [City]         NVARCHAR (100)  NOT NULL,
+    [ContactEmail] NVARCHAR (100)  NULL,
+    [ContactPhone] NVARCHAR (20)   NULL,
+    [IsAvailable]  BIT             DEFAULT ((1)) NOT NULL,
+    [ImageUrl]     NVARCHAR (100)  NULL,
+    PRIMARY KEY CLUSTERED ([VenueId] ASC)
 );
+
 
 CREATE TABLE Bookings (
     BookingId INT IDENTITY(1,1) PRIMARY KEY,
@@ -32,20 +35,17 @@ CREATE TABLE Bookings (
     RequestedDate DATETIME NOT NULL DEFAULT GETDATE()
 );
 
-CREATE TABLE Feedbacks (
-    FeedbackId INT IDENTITY(1,1) PRIMARY KEY,
-    
-    -- Link to the Venue being reviewed
-    VenueId INT NOT NULL,
-    CONSTRAINT FK_Feedbacks_VenueId FOREIGN KEY (VenueId) REFERENCES Venues(VenueId),
-    
-    -- Link to the User who wrote the review
-    UserId INT NOT NULL,
-    CONSTRAINT FK_Feedbacks_UserId FOREIGN KEY (UserId) REFERENCES Users(UserId),
-    
-    -- Rating from 1 to 5 stars
-    Rating INT NOT NULL CHECK (Rating >= 1 AND Rating <= 5),
-    
-    -- The text review content
-    Comment NVARCHAR(MAX) NOT NULL
+CREATE TABLE [dbo].[Feedbacks] (
+    [FeedbackId]   INT            IDENTITY (1, 1) NOT NULL,
+    [VenueId]      INT            NOT NULL,
+    [UserId]       INT            NOT NULL,
+    [BookingId]    INT            NOT NULL, -- NEW COLUMN
+    [Rating]       INT            NOT NULL,
+    [Comment]      NVARCHAR (MAX) NOT NULL,
+    [FeedbackDate] DATETIME       DEFAULT GETDATE() NOT NULL,
+    PRIMARY KEY CLUSTERED ([FeedbackId] ASC),
+    CONSTRAINT [FK_Feedbacks_Venues] FOREIGN KEY ([VenueId]) REFERENCES [dbo].[Venues] ([VenueId]),
+    CONSTRAINT [FK_Feedbacks_Users] FOREIGN KEY ([UserId]) REFERENCES [dbo].[Users] ([UserId]),
+    CONSTRAINT [FK_Feedbacks_Bookings] FOREIGN KEY ([BookingId]) REFERENCES [dbo].[Bookings] ([BookingId]),
+    CONSTRAINT [CK_Feedbacks_Rating] CHECK ([Rating]>=(1) AND [Rating]<=(5))
 );
