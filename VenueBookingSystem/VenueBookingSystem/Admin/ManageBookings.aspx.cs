@@ -21,11 +21,11 @@ namespace VenueBookingSystem.Admin
             string conn = ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
             using (SqlConnection sqlConn = new SqlConnection(conn))
             {
-                string query = @"SELECT B.*, U.FullName, V.Name as VenueName 
-                                 FROM Bookings B 
-                                 JOIN Users U ON B.UserId = U.UserId 
-                                 JOIN Venues V ON B.VenueId = V.VenueId 
-                                 ORDER BY B.RequestedDate DESC";
+                string query = @"SELECT B.*, ISNULL(U.FullName, 'Deleted User') as FullName, V.Name as VenueName 
+                 FROM Bookings B 
+                 LEFT JOIN Users U ON B.UserId = U.UserId 
+                 JOIN Venues V ON B.VenueId = V.VenueId 
+                 ORDER BY B.RequestedDate DESC";
                 SqlDataAdapter da = new SqlDataAdapter(query, sqlConn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
