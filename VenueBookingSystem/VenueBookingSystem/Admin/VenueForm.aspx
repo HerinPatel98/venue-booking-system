@@ -42,16 +42,13 @@
                             </div>
 
                             <!-- Venue Type & City -->
-                            <div class="col-md-6">
+                            <div class="mb-3">
                                 <label class="form-label fw-bold">Venue Type</label>
-                                <asp:DropDownList ID="ddlVenueType" runat="server" CssClass="form-select">
-                                    <asp:ListItem Text="-- Select Type --" Value=""></asp:ListItem>
-                                    <asp:ListItem Text="Banquet Hall" Value="Banquet Hall"></asp:ListItem>
-                                    <asp:ListItem Text="Garden Plot" Value="Garden Plot"></asp:ListItem>
-                                    <asp:ListItem Text="Terrace Hall" Value="Terrace Hall"></asp:ListItem>
-                                    <asp:ListItem Text="Hotel Ballroom" Value="Hotel Ballroom"></asp:ListItem>
-                                    <asp:ListItem Text="Resort" Value="Resort"></asp:ListItem>
+                                <asp:DropDownList ID="ddlVenueType" runat="server" CssClass="form-select" AppendDataBoundItems="true">
+                                    <asp:ListItem Text="-- Select Type --" Value="" />
                                 </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvType" runat="server" ControlToValidate="ddlVenueType"
+                                    InitialValue="" ErrorMessage="Please select a venue type." CssClass="text-danger small" Display="Dynamic" />
                             </div>
 
                             <div class="col-md-6">

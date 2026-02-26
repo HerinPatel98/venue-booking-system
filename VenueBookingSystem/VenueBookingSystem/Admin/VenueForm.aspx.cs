@@ -28,6 +28,7 @@ namespace VenueBookingSystem.Admin
             if (!IsPostBack)
             {
                 PopulateImageDropdown();
+                PopulateVenueTypes();
 
                 if (Request.QueryString["VenueId"] != null && int.TryParse(Request.QueryString["VenueId"], out int venueId))
                 {
@@ -40,6 +41,31 @@ namespace VenueBookingSystem.Admin
                 {
                     hfVenueId.Value = "";
                     btnSave.Text = "Add Venue";
+                }
+            }
+        }
+
+        private void PopulateVenueTypes()
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                // Just get the unique types that are already in your table
+                string query = "SELECT DISTINCT VenueType FROM Venues WHERE VenueType IS NOT NULL";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                try
+                {
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    ddlVenueType.DataSource = reader;
+                    ddlVenueType.DataTextField = "VenueType";
+                    ddlVenueType.DataValueField = "VenueType";
+                    ddlVenueType.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine("Error: " + ex.Message);
                 }
             }
         }
