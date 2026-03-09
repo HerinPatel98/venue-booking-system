@@ -39,9 +39,10 @@ CREATE TABLE [dbo].[Feedbacks] (
     [FeedbackId]   INT            IDENTITY (1, 1) NOT NULL,
     [VenueId]      INT            NOT NULL,
     [UserId]       INT            NOT NULL,
-    [BookingId]    INT            NOT NULL, -- NEW COLUMN
+    [BookingId]    INT            NOT NULL, 
     [Rating]       INT            NOT NULL,
     [Comment]      NVARCHAR (MAX) NOT NULL,
+    [IsVisible]    BIT            DEFAULT 0 NOT NULL, -- ADDED THIS LINE
     [FeedbackDate] DATETIME       DEFAULT GETDATE() NOT NULL,
     PRIMARY KEY CLUSTERED ([FeedbackId] ASC),
     CONSTRAINT [FK_Feedbacks_Venues] FOREIGN KEY ([VenueId]) REFERENCES [dbo].[Venues] ([VenueId]),
