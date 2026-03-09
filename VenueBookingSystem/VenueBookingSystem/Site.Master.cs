@@ -23,10 +23,13 @@ namespace VenueBookingSystem
                 navLogout.Visible = true;
                 navDashboard.Visible = true;
 
+                navSwitchUser.Visible = true;
+
                 // Check for admin role
                 if (Session["UserRole"] != null && Session["UserRole"].ToString() == "Admin")
                 {
                     navAdmin.Visible = true; // Show the admin panel link
+                    navSwitchUser.Visible = true;
                 }
 
                 if (Session["IsUserLoggedIn"] != null && (bool)Session["IsUserLoggedIn"] == true)
@@ -48,7 +51,24 @@ namespace VenueBookingSystem
                 navLogout.Visible = false;
                 navDashboard.Visible = false;
                 navAdmin.Visible = false;
+
+                navSwitchUser.Visible = false;
             }
+        }
+
+        protected void btnSwitchUser_Click(object sender, EventArgs e)
+        {
+            // 1. Clear the specific User Session variables [cite: 19]
+            Session["UserId"] = null;
+            Session["UserRole"] = null;
+            Session["IsUserLoggedIn"] = false;
+
+            // 2. Clear all other session data to prevent data leakage between users
+            Session.Abandon();
+            Session.Clear();
+
+            // 3. Redirect to login with a 'switch' flag to provide a better UI experience
+            Response.Redirect("~/Login.aspx?action=switch");
         }
     }
 }

@@ -78,13 +78,22 @@ namespace VenueBookingSystem
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl navLogout;
 
         /// <summary>
-        /// lnkHome control.
+        /// navSwitchUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor lnkHome;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navSwitchUser;
+
+        /// <summary>
+        /// btnSwitchUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSwitchUser;
 
         /// <summary>
         /// BreadcrumbContent control.
