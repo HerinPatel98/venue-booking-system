@@ -21,7 +21,7 @@ namespace VenueBookingSystem.Admin
             if (!IsPostBack)
             {
                 LoadKpiCards();
-                LoadRecentBookings(); // We will define this next
+                LoadRecentBookings();
             }
         }
 
@@ -52,6 +52,14 @@ namespace VenueBookingSystem.Admin
                 string userQuery = "SELECT COUNT(*) FROM Users WHERE Role = 'User'";
                 SqlCommand cmdUser = new SqlCommand(userQuery, conn);
                 lblTotalUsers.Text = cmdUser.ExecuteScalar().ToString();
+
+                // 5. Pending Reviews (Count of Feedbacks with Status 'Pending')
+                string reviewQuery = "SELECT COUNT(*) FROM Feedbacks WHERE Status = 'Pending'";
+                SqlCommand cmdReview = new SqlCommand(reviewQuery, conn);
+                lblPendingReviews.Text = cmdReview.ExecuteScalar().ToString();
+
+                // Optional: Hide the badge if there are 0 pending reviews to keep the UI clean
+                lblPendingReviews.Visible = lblPendingReviews.Text != "0";
             }
         }
 

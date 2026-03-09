@@ -61,7 +61,9 @@
                     <div class="d-flex gap-3 mt-3">
                         <a href="ManageBookings.aspx" class="btn btn-warning text-dark fw-bold">Review Pending Bookings</a>
                         <a href="ManageVenues.aspx" class="btn btn-outline-light">Update Venue Pricing</a>
-                        <a href="ManageReviews.aspx" class="btn btn-outline-light">Moderate Feedbacks</a>
+                        <a href="ManageReviews.aspx" class="btn btn-outline-light position-relative">Moderate Feedbacks
+                            <asp:Label ID="lblPendingReviews" runat="server" CssClass="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" Text="0"></asp:Label>
+                        </a>
                     </div>
                 </div>
             </div>
