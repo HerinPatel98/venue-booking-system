@@ -3,7 +3,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="BreadcrumbContent" runat="server">
-    <span class="text-muted">Admin</span>
+    <a id="lnkDashboard" runat="server" href="~/Admin/Dashboard.aspx" class="text-decoration-none" style="color: #00796b;">Dashboard</a>
     <span class="mx-2 text-muted">/</span>
     <span class="fw-bold" style="color: #004d40;">Manage Venues</span>
 </asp:Content>
