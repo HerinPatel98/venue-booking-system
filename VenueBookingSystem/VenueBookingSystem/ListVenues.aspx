@@ -29,7 +29,7 @@
             
             <!-- Left Column: Sidebar Filters (col-md-3) -->
             <div class="col-md-3">
-                <div class="card shadow-sm mb-4 sticky-md-top">
+                <div class="card shadow-sm mb-4 ">
                     <div class="card-header" style="background-color: #e0f2f1;">
                         <strong>Filter Venues</strong>
                     </div>
@@ -52,16 +52,33 @@
 
                         <%-- Capacity Input --%>
                          <h6 class="card-title">Minimum Capacity</h6>
-                         <asp:TextBox ID="txtCapacity" runat="server" CssClass="form-control mb-3" TextMode="Number" placeholder="Min guests"></asp:TextBox>
+                         <asp:TextBox ID="txtCapacity" runat="server" CssClass="form-control mb-3" TextMode="Number"  placeholder="Min guests"></asp:TextBox>
 
                         <%-- The Filter Button (needed to trigger postback in Web Forms) --%>
                         <asp:Button ID="btnApplyFilters" runat="server" Text="Apply Filters" OnClick="btnApplyFilters_Click" CssClass="btn btn-primary w-100" />
+                        <asp:Button ID="btnClearFilters" runat="server" Text="Clear Filters" OnClick="btnClearFilters_Click" CssClass="btn btn-outline-secondary w-100 mt-1"/>
                     </div>
                 </div>
             </div>
 
             <!-- Right Column: Venue List Results (col-md-9) -->
             <div class="col-md-9">
+                <div class="d-flex justify-content-between align-items-center bg-light p-3 rounded mb-4 shadow-sm border">
+                    <span class="text-muted fw-bold">Showing Available Venues</span>
+                    <div class="d-flex align-items-center gap-2">
+                        <label class="text-muted small fw-bold mb-0">SORT BY:</label>
+                        <asp:DropDownList ID="ddlSortBy" runat="server" CssClass="form-select form-select-sm"
+                            Style="width: 200px;" AutoPostBack="true" OnSelectedIndexChanged="ddlSortBy_SelectedIndexChanged">
+                            <asp:ListItem Text="City (A-Z)" Value="City ASC, Name ASC"></asp:ListItem>
+                            <asp:ListItem Text="Price: Low to High" Value="BasePrice ASC"></asp:ListItem>
+                            <asp:ListItem Text="Price: High to Low" Value="BasePrice DESC"></asp:ListItem>
+                            <asp:ListItem Text="Capacity: High to Low" Value="Capacity DESC"></asp:ListItem>
+                            <asp:ListItem Text="Capacity: Low to High" Value="Capacity ASC"></asp:ListItem>
+                            <asp:ListItem Text="Venue Name (A-Z)" Value="Name ASC"></asp:ListItem>
+                            <asp:ListItem Text="Venue Type" Value="VenueType ASC"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                </div>
                 <asp:Repeater ID="RepeaterVenues" runat="server">
                     <ItemTemplate>
                         <!-- Reusing the card design from Default.aspx -->
@@ -81,7 +98,7 @@
                                         </ul>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <h5 class="text-primary">₹<%# Eval("BasePrice", "{0:N0}") %></h5>
-                                           <a href='VenueDetails.aspx?VenueId=<%# Eval("VenueId") %>&date=<%# txtBookingDate.Text %>' class="btn btn-primary">Book Now</a>
+                                            <a href='VenueDetails.aspx?VenueId=<%# Eval("VenueId") %>&date=<%# txtBookingDate.Text %>' class="btn btn-primary">Book Now</a>
                                         </div>
                                     </div>
                                 </div>

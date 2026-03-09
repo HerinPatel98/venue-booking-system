@@ -52,6 +52,33 @@ namespace VenueBookingSystem
             BindRepeater();
         }
 
+        protected void btnClearFilters_Click(object sender, EventArgs e)
+        {
+            // 1. Reset the Date to Today [cite: 49]
+            txtBookingDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+            // 2. Clear all City Checkbox selections [cite: 50]
+            foreach (ListItem item in cblCity.Items)
+            {
+                item.Selected = false;
+            }
+
+            // 3. Clear all Venue Type Checkbox selections [cite: 51]
+            foreach (ListItem item in cblVenueType.Items)
+            {
+                item.Selected = false;
+            }
+
+            // 4. Clear the Capacity text box [cite: 53]
+            txtCapacity.Text = "";
+
+            // 5. Reset Sort order
+            ddlSortBy.SelectedIndex = 0;
+
+            // 6. Reload the Repeater to show all available venues without filters [cite: 55]
+            BindRepeater();
+        }
+
         private void BindRepeater()
         {
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
@@ -114,7 +141,8 @@ namespace VenueBookingSystem
             }
 
             // --- Finalize Query ---
-            queryBuilder.Append(" ORDER BY City, Name");
+            string sortOrder = ddlSortBy.SelectedValue;
+            queryBuilder.Append(" ORDER BY " + sortOrder);
 
             // Execute the query
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -204,5 +232,10 @@ namespace VenueBookingSystem
             return selectedItems;
         }
 
+        protected void ddlSortBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Simply re-run the filter logic, which now includes the new Sort Order
+            BindRepeater();
+        }
     }
 }
