@@ -6,6 +6,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
+                        <div class="mb-4 d-flex justify-content-center">
+                            <div class="logo-container shadow-sm border rounded-circle bg-white p-2">
+                                <asp:Image ID="imgLogo" runat="server"
+                                    ImageUrl="~/Images/Logo1.jpg"
+                                    AlternateText="Golden Petal Venues Logo"
+                                    CssClass="rounded-circle"
+                                    Style="width: 150px; height: 150px; object-fit: contain;" />
+                            </div>
+                        </div>
                         <%-- Catchy Headline and Sub-text --%>
                         <h1 class="display-4 fw-bold">Find the Perfect Venue for Your Next Event</h1>
                         <p class="lead text-muted">Browse hundreds of banquet halls, garden plots, and terraces across 28 cities.</p>
