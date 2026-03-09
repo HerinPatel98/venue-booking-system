@@ -18,6 +18,7 @@ namespace VenueBookingSystem
                 Response.Redirect("~/Login.aspx");
                 return;
             }
+            lblFullName.Text = Session["FullName"].ToString();
 
             // CRITICAL FIX: Load data EVERY time.
             // If we wrap this in !IsPostBack, the GridView is empty when the button click event tries to fire.

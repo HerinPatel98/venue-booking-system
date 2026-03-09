@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="User Registration" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="VenueBookingSystem.Register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+<asp:Content ID="RegBreadcrumb" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+    <span class="fw-bold" style="color: #004d40;">Register</span>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
      <div class="container mt-5">
         <div class="row justify-content-center">
@@ -31,7 +34,7 @@
                             <asp:RegularExpressionValidator 
                                 runat="server" 
                                 ControlToValidate="txtPassword"
-                                ValidationExpression="^(?=.*[A-Z|a-z])(?=.*[0-9]).{4,}$"
+                                ValidationExpression="^(?=.*[A-Z|a-z])(?=.*[0-9]).{4,32}$"
                                 ErrorMessage="Password must be 4+ chars, with 1 uppercase, 1 number."
                                 ForeColor="Red"
                                 Display="Dynamic"

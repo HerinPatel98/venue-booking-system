@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="User Login Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="VenueBookingSystem.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
+<asp:Content ID="LoginBreadcrumb" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+    <span class="fw-bold" style="color: #004d40;">Login</span>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
         <div class="row justify-content-center">

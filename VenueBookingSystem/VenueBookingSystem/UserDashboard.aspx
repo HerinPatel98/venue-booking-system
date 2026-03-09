@@ -19,7 +19,7 @@
             <div class="row align-items-center">
                 <div class="col-md-9">
                     <h2 class="card-title fw-bold" style="color: #00796b;">
-                        Welcome back, <asp:Label ID="lblFullName" runat="server" Text="User"></asp:Label>!
+                        Welcome back, <asp:Label ID="lblFullName" runat="server" Text="User" ForeColor="DarkSlateGray"></asp:Label>!
                     </h2>
                     <p class="card-text text-muted">Manage your events, view status, and find new venues.</p>
                 </div>
