@@ -20,17 +20,26 @@
                     <div class="row">
                         <!-- Image Area (Normal size to prevent pixelation) -->
                         <div class="col-md-5 mb-3">
-                            <asp:Image ID="imgVenue" runat="server" CssClass="img-fluid rounded shadow-sm border" 
-                                style="max-height: 300px; width: auto; display: block;" />
+                            <asp:Image ID="imgVenue" runat="server" CssClass="img-fluid rounded shadow-sm border"
+                                Style="max-height: 300px; width: auto; display: block;" />
                         </div>
                         <!-- Quick Title & Rating -->
                         <div class="col-md-7">
-                            <h1 class="fw-bold" style="color: #00796b;"><asp:Label ID="lblVenueName" runat="server"></asp:Label></h1>
+                            <h1 class="fw-bold" style="color: #00796b;">
+                                <asp:Label ID="lblVenueName" runat="server"></asp:Label></h1>
                             <div class="mb-2">
-                                <span class="badge bg-light shadow-sm text-dark p-2">⭐ <asp:Label ID="lblAvgRating" runat="server" Text="0.0"></asp:Label></span>
-                                <span class="text-muted ms-2">(<asp:Label ID="lblReviewCount" runat="server" Text="0"></asp:Label> Reviews)</span>
+                                <span class="badge bg-light shadow-sm text-dark p-2">⭐
+                                    <asp:Label ID="lblAvgRating" runat="server" Text="0.0"></asp:Label></span>
+                                <span class="text-muted ms-2">(<asp:Label ID="lblReviewCount" runat="server" Text="0"></asp:Label>
+                                    Reviews)</span>
                             </div>
-                            <p class="text-muted mt-3">📍 <asp:Label ID="lblCity" runat="server"></asp:Label> | 👥 Max Capacity: <asp:Label ID="lblCapacity" runat="server"></asp:Label> Guests</p>
+                            <p class="text-muted mt-3">
+                                📍
+                                <asp:Label ID="lblCity" runat="server"></asp:Label>
+                                | 👥 Max Capacity:
+                                <asp:Label ID="lblCapacity" runat="server"></asp:Label>
+                                Guests
+                            </p>
                         </div>
                     </div>
 
@@ -38,8 +47,10 @@
 
                     <!-- Detailed Description -->
                     <h5 class="fw-bold mt-3" style="color: #00796b;">About this Venue</h5>
-                    <p class="text-secondary lead" style="font-size: 1rem;"><asp:Label ID="lblDescription" runat="server"></asp:Label></p>
-                    
+                    <p class="text-secondary lead" style="font-size: 1rem;">
+                        <asp:Label ID="lblDescription" runat="server"></asp:Label>
+                    </p>
+
                     <hr />
 
                     <!-- AMENITIES SECTION (Add-ons) -->
@@ -54,15 +65,42 @@
                             <asp:CheckBox ID="chkPhotography" runat="server" Text=" &nbsp; Photography (₹7,000)" CssClass="form-check-label mb-2 d-block" AutoPostBack="true" OnCheckedChanged="CalculateTotal" />
                         </div>
                     </div>
+
+                    <hr class="mt-5 mb-4" />
+                    <h5 class="fw-bold mb-4" style="color: #00796b;">Customer Reviews (<asp:Label ID="lblReviewCountBottom" runat="server" Text="0"></asp:Label>)</h5>
+                    <div class="review-section">
+                        <asp:Repeater ID="rptReviews" runat="server">
+                            <ItemTemplate>
+                                <div class="card border-0 shadow-sm mb-3" style="background-color: #f8f9fa; border-left: 4px solid #ffc107 !important;">
+                                    <div class="card-body p-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <h6 class="fw-bold mb-0 text-dark">
+                                                <i class="bi bi-person-circle text-secondary me-2"></i><%# Eval("FullName") %>
+                                            </h6>
+                                            <span class="text-muted small"><%# Eval("FeedbackDate", "{0:dd MMM yyyy}") %></span>
+                                        </div>
+                                        <div class="mb-2">
+                                            <span class="badge bg-white border shadow-sm text-warning px-2 py-1">
+                                                <%# Eval("Rating") %> ⭐
+                                            </span>
+                                        </div>
+                                        <p class="text-muted mb-0 small" style="line-height: 1.6;">
+                                            "<%# Eval("Comment") %>"
+                                       
+                                        </p>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
                 </div>
             </div>
-
             <!-- RIGHT COLUMN: Sticky Booking Sidebar -->
             <div class="col-md-4">
                 <div class="card shadow border-0 sticky-top" style="top: 100px; border-top: 5px solid #009688 !important;">
                     <div class="card-body p-4">
                         <h4 class="mb-4 fw-bold" style="color: #00796b;">Reserve Now</h4>
-                        
+
                         <!-- Date Selection -->
                         <div class="mb-4">
                             <label class="form-label text-muted small fw-bold">EVENT DATE</label>
@@ -84,16 +122,17 @@
                             <h5 class="fw-bold text-primary">₹<asp:Label ID="lblTotalPrice" runat="server" Text="0"></asp:Label></h5>
                         </div>
 
-                        <asp:Button ID="btnRequestBooking" runat="server" Text="Request to Book" 
-                            OnClick="btnRequestBooking_Click" 
+                        <asp:Button ID="btnRequestBooking" runat="server" Text="Request to Book"
+                            OnClick="btnRequestBooking_Click"
                             CssClass="btn btn-primary btn-lg w-100 py-3 shadow-sm fw-bold" />
-                        
+
                         <p class="text-muted small text-center mt-3 mb-0">
                             No immediate payment required. Admin will review and confirm availability.
                         </p>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </asp:Content>

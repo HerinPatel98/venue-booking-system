@@ -132,6 +132,24 @@ namespace VenueBookingSystem
         protected global::System.Web.UI.WebControls.CheckBox chkPhotography;
 
         /// <summary>
+        /// lblReviewCountBottom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblReviewCountBottom;
+
+        /// <summary>
+        /// rptReviews control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptReviews;
+
+        /// <summary>
         /// txtBookingDate control.
         /// </summary>
         /// <remarks>

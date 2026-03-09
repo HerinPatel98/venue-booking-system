@@ -32,6 +32,7 @@ namespace VenueBookingSystem
 
                 if (!string.IsNullOrEmpty(vId))
                 {
+                    LoadReviews(vId);
                     LoadVenue(vId);
                 }
                
@@ -69,6 +70,39 @@ namespace VenueBookingSystem
             }
         }
 
+        private void LoadReviews(string venueId)
+        {
+            string connString = ConfigurationManager.ConnectionStrings["MyBookingDBConnString"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                // Join Feedbacks with Users to get the FullName, and only select 'Approved' reviews
+                string query = @"
+                    SELECT U.FullName, F.Rating, F.Comment, F.FeedbackDate 
+                    FROM Feedbacks F
+                    INNER JOIN Users U ON F.UserId = U.UserId
+                    WHERE F.VenueId = @vid AND F.Status = 'Approved'
+                    ORDER BY F.FeedbackDate DESC";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@vid", venueId);
+
+                conn.Open();
+
+                // Using SqlDataAdapter is cleaner for bounding data to a Repeater
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    System.Data.DataTable dt = new System.Data.DataTable();
+                    da.Fill(dt);
+
+                    // Update the review count label at the top of the section
+                    lblReviewCountBottom.Text = dt.Rows.Count.ToString();
+
+                    // Bind data to the UI
+                    rptReviews.DataSource = dt;
+                    rptReviews.DataBind();
+                }
+            }
+        }
         protected void CalculateTotal(object sender, EventArgs e)
         {
             decimal basePrice = ViewState["BasePrice"] != null ? Convert.ToDecimal(ViewState["BasePrice"]) : 0;
