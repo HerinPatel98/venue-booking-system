@@ -5,4 +5,3 @@ Scripts/** linguist-vendored
 Content/** linguist-vendored
 obj/** linguist-vendored
 bin/** linguist-vendored
-*.js linguist-vendored
