@@ -11,7 +11,7 @@
 ## 1. PROJECT OVERVIEW
 
 **Project Name:** Venue Booking System  
-**Branding:** Golden Petal Venues (BookMyHall)  
+**Branding:** Golden Petal Venues  
 **Purpose:** A web application enabling users to browse venues, make bookings, and provide feedback. Admins can manage venues, bookings, users, and revenue.
 
 **Key Features:**
